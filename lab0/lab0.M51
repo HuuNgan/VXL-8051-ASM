@@ -1,0 +1,65 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/14/2020  20:43:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE lab0.obj, lab0_tn1.obj, lab0_tn2.obj TO lab0 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  lab0.obj (LAB0)
+  lab0_tn1.obj (LAB0_TN1)
+  lab0_tn2.obj (LAB0_TN2)
+
+
+LINK MAP OF MODULE:  lab0 (LAB0)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     2006H     ABSOLUTE     
+* OVERLAP * CODE    0000H     2003H     ABSOLUTE     
+* OVERLAP * CODE    0000H     2006H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  lab0 (LAB0)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB0
+  D:0090H         SYMBOL        P1
+  C:2000H         LINE#         2
+  C:2002H         LINE#         3
+  C:2004H         LINE#         4
+  -------         ENDMOD        LAB0
+
+  -------         MODULE        LAB0_TN1
+  D:0090H         SYMBOL        P1
+  C:2000H         LINE#         2
+  -------         ENDMOD        LAB0_TN1
+
+  -------         MODULE        LAB0_TN2
+  C:2000H         LINE#         2
+  C:2002H         LINE#         3
+  C:2005H         LINE#         4
+  -------         ENDMOD        LAB0_TN2
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      2005H
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      2005H
+
+Program Size: data=8.0 xdata=0 code=24591
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/14/2020  20:43:29  PAGE 2
+
+
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

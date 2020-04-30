@@ -1,0 +1,28 @@
+A51 MACRO ASSEMBLER  LAB0_TN2                                                             04/14/2020 20:56:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab0_tn2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab0_tn2.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+2000                   1     ORG 2000H
+2000 74D7              2     MOV A, #0D7H              ;A=D7H = 1101 0111 B
+2002 900000            3     MOV DPTR, #0000H          ;DTPR=0000H
+2005 F0                4     MOVX @DPTR, A             ;(DTPR) = A
+                       5     END
+A51 MACRO ASSEMBLER  LAB0_TN2                                                             04/14/2020 20:56:32 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

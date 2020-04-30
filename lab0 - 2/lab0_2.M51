@@ -1,0 +1,38 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/14/2020  20:56:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE lab0_tn2.obj TO lab0_2 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  lab0_tn2.obj (LAB0_TN2)
+
+
+LINK MAP OF MODULE:  lab0_2 (LAB0_TN2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     2006H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  lab0_2 (LAB0_TN2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB0_TN2
+  C:2000H         LINE#         2
+  C:2002H         LINE#         3
+  C:2005H         LINE#         4
+  -------         ENDMOD        LAB0_TN2
+
+Program Size: data=8.0 xdata=0 code=8198
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

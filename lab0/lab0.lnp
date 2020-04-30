@@ -1,0 +1,5 @@
+"lab0.obj",
+"lab0_tn1.obj",
+"lab0_tn2.obj" 
+TO "lab0" 
+RAMSIZE(256) 

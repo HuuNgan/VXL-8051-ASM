@@ -1,0 +1,59 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/29/2020  11:31:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE lab1_TN4_duty80.obj TO lab1_TN4 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  lab1_TN4_duty80.obj (LAB1_TN4_DUTY80)
+
+
+LINK MAP OF MODULE:  lab1_TN4 (LAB1_TN4_DUTY80)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     2020H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  lab1_TN4 (LAB1_TN4_DUTY80)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB1_TN4_DUTY80
+  C:2017H         SYMBOL        DELAY_100
+  C:200AH         SYMBOL        DELAY_400
+  C:200EH         SYMBOL        LOOP1
+  C:200CH         SYMBOL        LOOP2
+  C:2019H         SYMBOL        LOOP3
+  C:2000H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  C:2000H         LINE#         4
+  C:2002H         LINE#         5
+  C:2004H         LINE#         6
+  C:2006H         LINE#         7
+  C:2008H         LINE#         8
+  C:200AH         LINE#         11
+  C:200CH         LINE#         12
+  C:200EH         LINE#         13
+  C:2010H         LINE#         14
+  C:2012H         LINE#         15
+  C:2014H         LINE#         16
+  C:2016H         LINE#         17
+  C:2017H         LINE#         20
+  C:2019H         LINE#         21
+  C:201BH         LINE#         22
+  C:201DH         LINE#         23
+  C:201FH         LINE#         24
+  -------         ENDMOD        LAB1_TN4_DUTY80
+
+Program Size: data=8.0 xdata=0 code=8224
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

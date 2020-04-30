@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  LAB1_TN4                                                             04/29/2020 11:30:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab1_TN4.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab1_TN4.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; tao xung vuong 2Hz, duty cycle = 70% tai chan P1.0
+2000                   2     ORG 2000H
+2000                   3     MAIN:
+2000 D290              4         SETB P1.0
+2002 110A              5             ACALL DELAY_350    ; 70% T
+2004 C290              6             CLR P1.0                   
+2006 1117              7             ACALL DELAY_150    ; 30% T
+2008 80F6              8     SJMP MAIN ; lap vo han chuong trinh MAIN
+                       9     
+200A                  10     DELAY_350:        ;DELAY 350ms
+200A 7F04             11                MOV R7, #4
+200C 7EAF             12     LOOP2: MOV R6, #175
+200E 7DFA             13     LOOP1: MOV R5, #250        ;T = 2MC*4*175*250 = 350 000us
+2010 DDFE             14            DJNZ R5, $
+2012 DEFA             15                DJNZ R6, LOOP1
+2014 DFF6             16                DJNZ R7, LOOP2
+2016 22               17     RET
+                      18     
+2017                  19     DELAY_150:        ;DELAY 150ms
+2017 7F03             20            MOV R7, #3
+2019 7E64             21     LOOP4: MOV R6, #100
+201B 7DFA             22     LOOP3: MOV R5, #250        ;T = 2MC*3*100*250 = 150 000us
+201D DDFE             23            DJNZ R5, $
+201F DEFA             24                DJNZ R6, LOOP3
+2021 DFF6             25                DJNZ R7, LOOP4
+2023 22               26     RET
+                      27     
+                      28     END
+A51 MACRO ASSEMBLER  LAB1_TN4                                                             04/29/2020 11:30:41 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_150. . . . .  C ADDR   2017H   A   
+DELAY_350. . . . .  C ADDR   200AH   A   
+LOOP1. . . . . . .  C ADDR   200EH   A   
+LOOP2. . . . . . .  C ADDR   200CH   A   
+LOOP3. . . . . . .  C ADDR   201BH   A   
+LOOP4. . . . . . .  C ADDR   2019H   A   
+MAIN . . . . . . .  C ADDR   2000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

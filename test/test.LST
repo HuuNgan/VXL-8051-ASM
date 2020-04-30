@@ -1,0 +1,30 @@
+A51 MACRO ASSEMBLER  TEST                                                                 04/18/2020 13:56:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN test.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE test.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+2000                   1     ORG 2000H
+2000 902006            2     MOV DPTR,#TABLE
+2003 7402              3     MOV A,#2
+2005 93                4     MOVC A,@A+DPTR
+2006 02017250          5     TABLE: DB 02H,01H,72H,50H
+                       6     END
+A51 MACRO ASSEMBLER  TEST                                                                 04/18/2020 13:56:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+TABLE. . . . . . .  C ADDR   2006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

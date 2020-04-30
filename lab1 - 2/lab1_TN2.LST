@@ -1,0 +1,41 @@
+A51 MACRO ASSEMBLER  LAB1_TN2                                                             04/29/2020 10:48:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab1_TN2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab1_TN2.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; tao xung 1Hz, duty cycle = 50%
+2000                   2     ORG 2000H
+2000                   3     MAIN:
+2000 B290              4                CPL P1.0
+                       5     ;DELAY 500ms
+2002 7F04              6            MOV R7, #4
+2004 7EFA              7     LOOP2: MOV R6, #250
+2006 7DFA              8     LOOP1: MOV R5, #250
+2008 DDFE              9            DJNZ R5, $
+200A DEFA             10                DJNZ R6, LOOP1
+200C DFF6             11                DJNZ R7, LOOP2
+                      12            
+200E 80F0             13                SJMP MAIN
+                      14     END
+A51 MACRO ASSEMBLER  LAB1_TN2                                                             04/29/2020 10:48:58 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP1. . . . . . .  C ADDR   2006H   A   
+LOOP2. . . . . . .  C ADDR   2004H   A   
+MAIN . . . . . . .  C ADDR   2000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

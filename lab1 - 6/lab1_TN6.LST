@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  LAB1_TN6                                                             04/29/2020 12:18:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab1_TN6.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab1_TN6.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;tao hieu ung quay led, thoi gian chuyen trang thai 1s
+2000                   2     ORG 2000H
+2000                   3     MAIN:
+2000 74FF              4         MOV A, #0FFH
+2002 C3                5             CLR C
+2003                   6     LOOP:
+2003 33                7             RLC A
+2004 F590              8             MOV P1, A
+2006 110A              9             ACALL Delay1sIns
+2008 80F9             10     SJMP LOOP                               ;lap vo han CT trong LOOP
+                      11     
+200A                  12     Delay1sIns:                        ;DELAY 1s
+200A 7F08             13            MOV R7, #8
+200C 7EFA             14     LOOP2: MOV R6, #250
+200E 7DFA             15     LOOP1: MOV R5, #250        ;T = 2MC*8*250*250 = 1000000us
+2010 DDFE             16            DJNZ R5, $
+2012 DEFA             17                DJNZ R6, LOOP1
+2014 DFF6             18                DJNZ R7, LOOP2
+2016 22               19     RET
+                      20     
+                      21     END
+A51 MACRO ASSEMBLER  LAB1_TN6                                                             04/29/2020 12:18:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY1SINS . . . .  C ADDR   200AH   A   
+LOOP . . . . . . .  C ADDR   2003H   A   
+LOOP1. . . . . . .  C ADDR   200EH   A   
+LOOP2. . . . . . .  C ADDR   200CH   A   
+MAIN . . . . . . .  C ADDR   2000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

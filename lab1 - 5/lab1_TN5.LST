@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  LAB1_TN5                                                             04/29/2020 11:50:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab1_TN5.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab1_TN5.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; tao 2 xung vuong 0.5Hz va 1Hz voi duty cycle =50%
+                       2     ; tren cac chan P1.0 va P1.1
+2000                   3     ORG 2000H
+2000                   4     MAIN:
+2000 B290              5         CPL P1.0
+2002 B291              6             CPL P1.1
+2004 110C              7             ACALL DELAY_500
+2006 B291              8             CPL P1.1
+2008 110C              9             ACALL DELAY_500
+200A 80F4             10     SJMP MAIN                                  ;lap vo han CT MAIN
+                      11     
+200C                  12     DELAY_500:                                 ;DELAY 500ms
+200C 7F04             13            MOV R7, #4
+200E 7EFA             14     LOOP2: MOV R6, #250
+2010 7DFA             15     LOOP1: MOV R5, #250
+2012 DDFE             16            DJNZ R5, $
+2014 DEFA             17                DJNZ R6, LOOP1
+2016 DFF6             18                DJNZ R7, LOOP2
+2018 22               19     RET
+                      20     
+                      21     END
+A51 MACRO ASSEMBLER  LAB1_TN5                                                             04/29/2020 11:50:25 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_500. . . . .  C ADDR   200CH   A   
+LOOP1. . . . . . .  C ADDR   2010H   A   
+LOOP2. . . . . . .  C ADDR   200EH   A   
+MAIN . . . . . . .  C ADDR   2000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

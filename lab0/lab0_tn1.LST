@@ -1,0 +1,27 @@
+A51 MACRO ASSEMBLER  LAB0_TN1                                                             04/14/2020 20:43:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN lab0_tn1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lab0_tn1.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+2000                   1     ORG 2000H
+2000 7590E5            2     MOV P1, #0E5H
+                       3     END
+A51 MACRO ASSEMBLER  LAB0_TN1                                                             04/14/2020 20:43:25 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

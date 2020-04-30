@@ -1,0 +1,39 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/18/2020  13:56:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE test.obj TO test RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  test.obj (TEST)
+
+
+LINK MAP OF MODULE:  test (TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     200AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  test (TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST
+  C:2006H         SYMBOL        TABLE
+  C:2000H         LINE#         2
+  C:2003H         LINE#         3
+  C:2005H         LINE#         4
+  -------         ENDMOD        TEST
+
+Program Size: data=8.0 xdata=0 code=8202
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
