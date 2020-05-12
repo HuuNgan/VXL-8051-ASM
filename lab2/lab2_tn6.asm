@@ -18,6 +18,7 @@ LOOP:                 ;VONG LAP VO HAN
     INC R1            ;TANG R1 DE LAY DATA HANG KE TIEP
     CJNE R1, #9, LOOP
     MOV R1, #0        ;XOA R1 NEU R1=9
+    MOV B, #0FEH      ;RESET B	
 SJMP LOOP
 
 ;***********************************************************
@@ -36,7 +37,7 @@ RET
 ;***********************************************************
 ;DELAY 1ms
 Delay1ms:
-       MOV R7, #250
+       MOV R7, #4
 DL1:   MOV R6, #250
        DJNZ R6, $
        DJNZ R7, DL1        ;DL1: 'DELAY LOOP 1'
