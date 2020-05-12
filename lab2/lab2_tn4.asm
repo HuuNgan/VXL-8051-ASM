@@ -6,7 +6,7 @@ LOOP:					;Vong lap vo han
     ACALL DisplayLED    ;Xuat R0 ra LED 0
     ACALL Delay4ms    
     INC R0
-	INC R1
+    INC R1
     CJNE R0, #5, LOOP
     MOV R0, #1
     MOV R1, #0
@@ -15,7 +15,7 @@ LOOP:					;Vong lap vo han
 
 ;Xuat gia tri luu tren R0 len LED 7 doan o vi tri luu tren R1
 DisplayLED:
-	MOV B, R1
+    MOV B, R1
     MOV A, #11101111B
 SHIFTLOOP:
     RL A
