@@ -1,7 +1,7 @@
 ORG 2000H
 MAIN:
     MOV R1, #0        ;R1 LUU VI TRI THAM CHIEU TABLE
-    MOV B, #7FH      ;VI TRI HANG QUET
+    MOV B, #0FEH      ;VI TRI HANG QUET
 LOOP:                 ;VONG LAP VO HAN
     MOV A, R1
     MOV DPTR, #TABLE
