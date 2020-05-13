@@ -1,6 +1,6 @@
 ORG 2000H
 MAIN:
-    MOV R1, #0			
+    MOV R1, #0			;CHON VI TRI BAT DAU TAI LED 0
     MOV R0, #1			
 LOOP:					;Vong lap vo han
     ACALL DisplayLED    ;Xuat R0 ra LED 0
@@ -16,7 +16,8 @@ LOOP:					;Vong lap vo han
 ;Xuat gia tri luu tren R0 len LED 7 doan o vi tri luu tren R1
 DisplayLED:
     MOV B, R1
-    MOV A, #11101111B
+    INC B
+    MOV A, #11110111B
 SHIFTLOOP:
     RL A
     DJNZ B, SHIFTLOOP

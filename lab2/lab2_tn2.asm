@@ -10,7 +10,8 @@ MAIN:
 ;Xuat gia tri luu tren R0 len LED 7 doan o vi tri luu tren R1
 DisplayLED:
     MOV B, R1
-    MOV A, #11101111B
+    INC B
+    MOV A, #11110111B
 SHIFTLOOP:
     RL A
     DJNZ B, SHIFTLOOP
