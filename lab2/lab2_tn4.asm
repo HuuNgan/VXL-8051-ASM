@@ -4,7 +4,7 @@ MAIN:
     MOV R0, #1			
 LOOP:					;Vong lap vo han
     ACALL DisplayLED    ;Xuat R0 ra LED 0
-    ACALL Delay4ms    
+    ACALL Delay8ms    
     INC R0
     INC R1
     CJNE R0, #5, LOOP
@@ -34,8 +34,8 @@ SHIFTLOOP:
     MOVX @DPTR, A
 RET
 
-;DELAY 4ms
-Delay4ms:
+;DELAY 8ms
+Delay8ms:
        MOV R7, #16
 LOOP1: MOV R6, #250
        DJNZ R6, $

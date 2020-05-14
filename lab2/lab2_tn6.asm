@@ -37,7 +37,7 @@ RET
 ;***********************************************************
 ;DELAY 1ms
 Delay1ms:
-       MOV R7, #4
+       MOV R7, #2
 DL1:   MOV R6, #250
        DJNZ R6, $
        DJNZ R7, DL1        ;DL1: 'DELAY LOOP 1'
