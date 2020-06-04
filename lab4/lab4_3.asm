@@ -9,19 +9,14 @@ MAIN:
 
 LOOP:
     JB P1.0, $
-    MOV C, P1.0
     ACALL DELAY
-    ANL C,/P1.0
-    MOV F0, C
-    CPL C    
-    ANL C,P1.0
-    ORL C,F0
-    JC LOOP
-    
+    JB P1.0, LOOP
     CPL P1.1
     JNB P1.0, $
     ACALL DELAY5ms
     SJMP LOOP
+;END MAIN
+
 ;Delay 50ms ***********************************************
 DELAY:
     MOV TH0, #HIGH(COUNT1)
