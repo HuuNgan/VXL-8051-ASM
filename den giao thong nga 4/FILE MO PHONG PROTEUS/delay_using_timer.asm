@@ -1,0 +1,26 @@
+ORG 0H
+    MOV TMOD, #01H
+MAIN:
+    CPL P1.0
+    MOV R0, #5    ;T_DELAY = 5s
+    ACALL DELAY
+    SJMP MAIN
+;END MAIN
+
+
+;DELAY IN SECONDS *****************************************
+;SETTING DELAY TIME T0 R0 BEFORE RUNNING THIS
+DELAY:
+    MOV R7, #20
+AGAIN_TIMER:
+    MOV TH0, #HIGH(-50000)
+    MOV TL0, #LOW(-50000)
+    SETB TR0        ;KHOI DONG TIMER
+    JNB TF0, $      ;CHO TIMER TRAN
+    CLR TR0         ;DUNG TIMER
+    CLR TF0         ;XOA CO TF0
+    DJNZ R7, AGAIN_TIMER ;CHAY TIMER 20 LAN DE DELAY 1 GIAY
+    DJNZ R0, DELAY
+RET
+;END DELAY ************************************************
+END

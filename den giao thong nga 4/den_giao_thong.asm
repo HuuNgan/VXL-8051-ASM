@@ -1,0 +1,49 @@
+ORG 0H
+    MOV TMOD, #01H   ;chon timer0, che do 1
+MAIN:
+    ANL P1, #11000000B    ;TAT HET DEN
+
+    SETB P1.0    ;BAT DEN XANH 1
+    SETB P1.5    ;BAT DEN DO 2
+    MOV R0, #25
+    ACALL DELAY  ;DOI 25 GIAY
+
+    CLR P1.0    ;TAT DEN XANH 1
+    SETB P1.1   ;BAT DEN VANG 1
+    MOV R0, #3
+    ACALL DELAY ;DOI 3 GIAY
+
+    CLR P1.1    ;TAT DEN VANG 1
+    SETB P1.2   ;BAT DEN DO 1
+    CLR P1.5    ;TAT DEN DO 2
+    SETB P1.3   ;BAT DEN XANH 2
+    MOV R0, #33
+    ACALL DELAY ;DOI 33 GIAY
+
+    CLR P1.3    ;TAT DEN XANH 2
+    SETB P1.4   ;BAT DEN VANG 2
+    MOV R0, #3
+    ACALL DELAY ;DOI 3 GIAY
+
+    CLR P1.4    ;TAT DEN VANG 2
+    
+    SJMP MAIN
+;END MAIN
+
+
+;DELAY IN SECONDS *****************************************
+;SETTING DELAY TIME T0 R0 BEFORE RUNNING THIS
+DELAY:
+    MOV R7, #20
+AGAIN_TIMER:
+    MOV TH0, #HIGH(-50000)
+    MOV TL0, #LOW(-50000)
+    SETB TR0        ;KHOI DONG TIMER
+    JNB TF0, $      ;CHO TIMER TRAN
+    CLR TR0         ;DUNG TIMER
+    CLR TF0         ;XOA CO TF0
+    DJNZ R7, AGAIN_TIMER ;CHAY TIMER 20 LAN DE DELAY 1 GIAY
+    DJNZ R0, DELAY
+RET
+;END DELAY ************************************************
+END
