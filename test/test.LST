@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  TEST                                                                 04/18/2020 13:56:10 PAGE     1
+A51 MACRO ASSEMBLER  TEST                                                                 06/10/2020 19:36:32 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02
@@ -8,12 +8,25 @@ ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE test.asm SET(SMALL) DEBUG EP
 LOC  OBJ            LINE     SOURCE
 
 2000                   1     ORG 2000H
-2000 902006            2     MOV DPTR,#TABLE
-2003 7402              3     MOV A,#2
-2005 93                4     MOVC A,@A+DPTR
-2006 02017250          5     TABLE: DB 02H,01H,72H,50H
-                       6     END
-A51 MACRO ASSEMBLER  TEST                                                                 04/18/2020 13:56:10 PAGE     2
+  00B0                 2         RS   BIT P3.0
+  00B1                 3         RW   BIT P3.1
+  00B2                 4         E    BIT P3.2
+  0090                 5         DBUS EQU P1
+2000                   6     WAIT:
+2000 C2B0              7         CLR RS        ;TRUY XUAT LENH
+2002 D2B1              8         SETB RW       ;DOC LENH
+2004 D297              9         SETB DBUS.7   ;DBUS.7 LA INPUT
+2006 D2B2             10         SETB E        ;CHO PHEP TRUY XUAT LCD
+2008 C2B2             11         CLR E
+200A 2097F3           12         JB DBUS.7, WAIT    ;CHO CO BF=DB7=0
+200D D2B0             13         SETB RS            ;TRUY XUAT DATA
+200F 744D             14         MOV A, #'M'        ;XUAT KY TU M
+2011 F590             15         MOV DBUS, A        ;RA LCD
+2013 C2B1             16         CLR RW             ;GHI RA LCD
+2015 D2B2             17         SETB E
+2017 C2B2             18         CLR E
+                      19     END
+A51 MACRO ASSEMBLER  TEST                                                                 06/10/2020 19:36:32 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -21,7 +34,13 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
-TABLE. . . . . . .  C ADDR   2006H   A   
+DBUS . . . . . . .  D ADDR   0090H   A   
+E. . . . . . . . .  B ADDR   00B0H.2 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RS . . . . . . . .  B ADDR   00B0H.0 A   
+RW . . . . . . . .  B ADDR   00B0H.1 A   
+WAIT . . . . . . .  C ADDR   2000H   A   
 
 
 REGISTER BANK(S) USED: 0 

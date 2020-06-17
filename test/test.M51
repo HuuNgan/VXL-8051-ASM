@@ -1,15 +1,15 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        04/18/2020  13:56:10  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/17/2020  20:23:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-C:\KEIL\C51\BIN\BL51.EXE test.obj TO test RAMSIZE (256)
+C:\KEIL\C51\BIN\BL51.EXE .\sendchar.obj TO test RAMSIZE (256)
 
 
 INPUT MODULES INCLUDED:
-  test.obj (TEST)
+  .\sendchar.obj (SENDCHAR)
 
 
-LINK MAP OF MODULE:  test (TEST)
+LINK MAP OF MODULE:  test (SENDCHAR)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -19,21 +19,36 @@ LINK MAP OF MODULE:  test (TEST)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     200AH     ABSOLUTE     
+            CODE    0000H     201AH     ABSOLUTE     
 
 
 
-SYMBOL TABLE OF MODULE:  test (TEST)
+SYMBOL TABLE OF MODULE:  test (SENDCHAR)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        TEST
-  C:2006H         SYMBOL        TABLE
-  C:2000H         LINE#         2
-  C:2003H         LINE#         3
-  C:2005H         LINE#         4
-  -------         ENDMOD        TEST
+  -------         MODULE        SENDCHAR
+  D:00E0H         SYMBOL        ACC
+  D:0087H         SYMBOL        PCON
+  D:0099H         SYMBOL        SBUF
+  D:0098H         SYMBOL        SCON
+  D:008DH         SYMBOL        TH1
+  B:0098H.1       SYMBOL        TI
+  D:0089H         SYMBOL        TMOD
+  B:0088H.6       SYMBOL        TR1
+  C:2000H         LINE#         4
+  C:2002H         LINE#         5
+  C:2004H         LINE#         6
+  C:2006H         LINE#         8
+  C:2009H         LINE#         9
+  C:200CH         LINE#         10
+  C:200FH         LINE#         11
+  C:2011H         LINE#         14
+  C:2013H         LINE#         17
+  C:2016H         LINE#         18
+  C:2018H         LINE#         19
+  -------         ENDMOD        SENDCHAR
 
-Program Size: data=8.0 xdata=0 code=8202
+Program Size: data=8.0 xdata=0 code=8218
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

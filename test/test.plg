@@ -4,6 +4,8 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 D:\Tai lieu dien tu\Projects\KeilC 8051\test\test.uvproj
-Project File Date:  04/18/2020
+Project File Date:  06/10/2020
 
 <h2>Output:</h2>
+Build target 'Target 1'
+assembling lab4_4.asm...
