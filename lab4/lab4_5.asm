@@ -5,18 +5,18 @@ LCDADDR	EQU	6000H
 ;END DEFINE ***********************************************
 
 ORG 2000H
-	CALL SERIAL_INIT
+    CALL SERIAL_INIT
     CALL INIT_LCD
     CALL CLEARSCREEN
 MAIN:
     CALL RECEIVE_CHAR  
-    MOV R0, A
+    PUSH ACC
 
     CALL SENDCHAR
 
     MOV A, #80H
     CALL WRITECOM
-    MOV A, R0
+    POP ACC
     CALL WRITETEXT
     
 SJMP MAIN
