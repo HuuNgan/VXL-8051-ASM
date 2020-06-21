@@ -22,7 +22,7 @@ SERIAL_INIT:
 RET
 ;END SERIAL_INIT ******************************************
 
-;GUI KY 1 TU **********************************************
+;GUI 1 KY TU **********************************************
 SENDCHAR:
 ;    MOV C, P        ;DAT BIT KIEM TRA CHAN LE VAO CO C
 ;    CPL C           ;DOI SANG KIEM TRA LE
@@ -30,22 +30,9 @@ SENDCHAR:
     JNB TI, $       ;TX TRONG? NEU KHONG THI KIEM TRA LAI
     CLR TI			;TX TRONG THI XOA CO TI
     MOV SBUF, A     ;GUI KY TU
-    CLR ACC.7       ;BO BIT KIEM TRA LE
+;    CLR ACC.7       ;BO BIT KIEM TRA LE
 RET
 ;END SENDCHAR *********************************************
-
-;Delay500ms ***********************************************
-DELAY500:
-    MOV R7, #8
-L1: MOV R6, #250
-L2: SETB TR0
-    JNB TF0, $
-    CLR TR0
-    CLR TF0
-    DJNZ R6, L2
-    DJNZ R7, L1
-RET
-;End Delay ************************************************
 
 ;Send string **********************************************
 SENDSTRING:
