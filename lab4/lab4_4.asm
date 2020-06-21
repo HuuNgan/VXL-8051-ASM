@@ -51,6 +51,6 @@ RET
 ;END SENDSTRING *******************************************
 
 STRING:
-    DB "Hello world! ",0
+    DB "Hello world!", 0DH, 0
 
 END
