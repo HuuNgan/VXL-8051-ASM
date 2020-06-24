@@ -1,5 +1,5 @@
 ;DEFINE ***************************************************
-LCD_E	BIT	P3.4   ;doi thanh P3.4 neu su dung tren proteus
+LCD_E	BIT	P3.3   ;doi thanh P3.4 neu su dung tren proteus
 LCD_RS	BIT	P3.5
 LCDADDR	EQU	6000H
 ;END DEFINE ***********************************************
@@ -28,7 +28,7 @@ SERIAL_INIT:
     SETB ACC.7
     MOV PCON, A       ;3 LENH TREN SET BIT SMOD LEN 1
 
-    MOV SCON, #52H    ;CONG NOI TIEP, CHE DO 2, THU - PHAT
+    MOV SCON, #52H    ;CONG NOI TIEP, CHE DO 1, THU - PHAT
     MOV TMOD, #20H    ;TIMER1, CHE DO 2
     MOV TH1, #-3      ;TRI NAP LAI CHO 19200 BAUD
     SETB TR1          ;CHO TIMER1 CHAY    
