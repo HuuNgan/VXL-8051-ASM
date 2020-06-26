@@ -1,0 +1,94 @@
+			ORG		2000H
+			LJMP	MAIN
+			ORG		200BH
+			LJMP	TIMER0
+			ORG		201BH
+			LJMP	TIMER1
+			ORG		2030H
+MAIN:
+			MOV R2, #0
+			MOV R3, #0
+			MOV		TMOD,#11H
+			MOV		IE	,#8AH
+			MOV		DPTR,#0000H
+			
+			JB		P1.7,$
+			ACALL	DELAY
+			JB		P1.7,$
+			JNB		P1.7,$
+			SETB TF0
+			SETB TF1
+	
+CHECK0:		
+			JB		P1.6,CHECK1
+			SJMP    PAUSE	
+CHECK1:     JB      P1.5,CHECK0
+			SJMP	RESET	
+PAUSE:		
+			JNB		P1.6,$
+			CPL		TR1
+			SJMP	CHECK0
+RESET:
+			MOV		R2,#0
+			MOV		R3,#0
+			ACALL	CHUYEN_DOI
+			SJMP	CHECK0
+			
+TIMER0:
+			CLR		TR0
+			MOV		TH0,#HIGH(-3000)
+			MOV		TL0, #LOW(-3000)
+			SETB	TR0
+			MOV		A,@R1
+			MOVX	@DPTR,A
+			INC		R1
+			CJNE	R1,#24H,SKIP
+			MOV		R1,#20H
+SKIP:		RETI
+
+TIMER1:
+			CLR TR1
+			MOV TH1, #HIGH(-50000)
+			MOV TL1, #LOW(-50000)
+			SETB TR1
+
+			INC 	R2
+			CJNE 	R2, #100, EXIT
+			INC		R3
+			MOV		R2,#00H
+			CJNE	R3,#60,EXIT
+			MOV		R3,#00H
+
+EXIT:
+			ACALL	CHUYEN_DOI
+			RETI
+
+;INPUT R0
+CHUYEN_DOI:
+			MOV		A,R3
+			MOV		B,#10
+			DIV		AB
+			ADD		A,#01110000B
+			MOV		20H,A
+			MOV		A,B	
+			ADD		A,#10110000B
+			MOV		21H,A
+			
+			MOV		A,R2
+			MOV		B,#10
+			DIV		AB
+			ADD		A,#11010000B
+			MOV		22H,A
+			MOV		A,B	
+			ADD		A,#11100000B
+			MOV		23H,A	
+			RET
+
+DELAY:
+			MOV		R7,#50
+LOOP1:
+			MOV		R6,#250
+			DJNZ	R6,$
+			DJNZ	R7,LOOP1
+			RET
+END
