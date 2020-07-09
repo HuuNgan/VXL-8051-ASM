@@ -30,10 +30,10 @@ CHECK:
     CALL DELAY50MS
     JB P1.0, CHECK
     INC R0
-    ;JNB P1.0, $
+    JNB P1.0, $
     CJNE R0, #101, LOOP
     CALL CLEAR
-    MOV A, #83H
+    MOV A, #0C3H
     CALL WRITECOM
     CALL SENDSTRING 
     SJMP $
