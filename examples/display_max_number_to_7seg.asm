@@ -1,0 +1,80 @@
+ORG 0000H
+JMP MAIN
+ORG 000BH
+JMP TIM0_ISR
+ORG 0030H
+MAIN:
+    MOV IE, #82H
+    MOV TMOD, #01H 
+    SETB TF0
+
+    MOV R0, #30H
+    MOV 30H, #0
+    MOV 31H, #0
+    MOV 32H, #0
+    MOV 33H, #0
+
+    MOV 20H, #26
+    MOV 21H, #75
+    MOV 22H, #14
+    MOV 23H, #50
+
+;LOOP:
+    CALL MAX
+    SJMP $
+
+MAX:
+    MOV R1, #21H  
+    MOV R2, 20H
+LOOP1:
+    MOV A, R2
+    CPL A
+    INC A
+    ADD A, @R1
+    MOV C, ACC.7
+    JC TT1
+    MOV A, @R1
+    MOV R2, A
+TT1:         
+    INC R1
+    CJNE R1, #25H, LOOP1
+RET
+
+TIM0_ISR:
+    PUSH ACC
+
+    CLR TR0
+    MOV TH0, #HIGH(-1000)
+    MOV TL0, #LOW(-1000)
+    SETB TR0
+
+    MOV A, R2
+    MOV B, #10
+    DIV AB
+    PUSH ACC
+    MOV A, B
+    MOV 33H, A
+    POP ACC
+    MOV B, #10
+    DIV AB
+    MOV 32H, B
+    MOV 31H, A
+
+    MOV A, R0
+    ADD A, #-30H
+    MOV DPTR, #LED_LOC
+    MOVC A, @A+DPTR
+    ADD A, @R0    
+    MOV DPTR, #0000H
+    MOVX @DPTR, A
+    INC R0 
+    CJNE R0, #34H, SKIP
+    MOV R0, #30H
+SKIP:
+    POP ACC
+
+RETI
+
+LED_LOC:
+    DB 01110000B, 10110000B, 11010000B, 11100000B
+END
