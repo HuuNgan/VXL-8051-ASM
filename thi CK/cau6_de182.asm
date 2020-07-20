@@ -8,17 +8,19 @@ ORG 0030H
 MAIN:
     MOV IE, #92H
     MOV IP, #10H    ;UU TIEN NGAT SERIAL
-    MOV SCON, #52H
+    MOV SCON, #50H
     MOV TMOD, #21H
     MOV TH1, #-13
     MOV R7, #11
+    SETB TR1
     SETB TF0        ;EP NGAT
-
+    SJMP $
 TIM0_ISR:
     CLR TR0
     CLR TF0
     MOV TH0, #HIGH(-50000)
     MOV TL0, #LOW(-50000)
+    SETB TR0
     DJNZ R7, SKIP
     CPL P2.0
     MOV R7, #10
