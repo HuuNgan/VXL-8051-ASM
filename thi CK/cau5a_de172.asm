@@ -1,0 +1,14 @@
+ORG 0000H
+    MOV TMOD, #01H
+LOOP:
+    CPL P1.0
+    CALL DELAY_2500
+    SJMP LOOP
+DELAY_2500:
+    MOV TH0, #HIGH(-2500)
+    MOV TL0, #LOW(-2500)
+    SETB TR0
+    JNB TF0, $
+    CLR TR0
+    CLR TF0
+    RET
