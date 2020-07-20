@@ -1,0 +1,25 @@
+ORG 0000H
+    MOV SCON, #0D2H
+    MOV TMOD, #20H
+    MOV TH1, #-3
+    SETB TR1 
+    MOV R0, #30H
+    MOV DPTR, #2000H
+
+LOOP:
+    JNB RI, $
+    CLR RI
+    MOV A, SBUF
+    JB RB8, NOT_ZERO
+    MOV @R0, A
+    INC R0
+    CJNE R0, #62H, LOOP
+    SJMP $
+
+NOT_ZERO:
+    MOVX @DPTR, A
+    INC DPTR
+    MOV A, DPL
+    CJNE A, #64H, LOOP
+    SJMP $
+END
