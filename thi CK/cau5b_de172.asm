@@ -1,0 +1,49 @@
+ORG 0000H
+    LJMP MAIN
+ORG 000BH
+    LJMP TIM0_ISR
+ORG 001BH
+    LJMP TIM1_ISR
+ORG 0030H
+MAIN:
+    MOV IE, #8AH
+    MOV IP, #08H
+    MOV TMOD, #11H
+    MOV R7, #11
+   
+    SETB TF0
+    SETB TF1
+
+    SJMP $
+
+TIM1_ISR:
+    CLR TR1
+    CLR TF1
+    MOV TH1, #HIGH(-50000)
+    MOV TL1, #LOW(-50000)
+    SETB TR1
+    DJNZ R7, SKIP_T1
+    CPL F0
+    MOV R7, #10
+SKIP_T1:
+    RETI
+
+TIM0_ISR:
+    CLR TF0
+    CLR TR0
+    JB F0, STATE2
+    MOV TH0, #HIGH(-1250)
+    MOV TL0, #LOW(-1250)
+    SETB TR0
+    CPL P1.0
+    CLR P1.1
+    RETI
+STATE2:
+    MOV TH0, #HIGH(-500)
+    MOV TL0, #LOW(-500)
+    SETB TR0
+    CPL P1.1
+    CLR P1.0
+    RETI
+    
+END
