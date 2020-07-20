@@ -5,16 +5,21 @@ ORG 0000H
     MOV DPTR, #2000H
     MOV A, #0
     MOVX @DPTR, A      ; XOA O NHO 2000H
+    CLR P1.0
     SETB TR0
-LOOP1:
-    MOV A, TL0
-    CJNE A, #10H, LOOP1     ;BYTE THAP CUA 3600
-LOOP2:
+
+LOOP:
     MOV A, TH0
-    CJNE A, #0EH, LOOP2     ;BYTE CAO CUA 3600
+    CJNE A, #0EH, LOOP
+LOOP1:    
+    MOV A, TL0
+    CJNE A, #10H, LOOP1
+    MOV TH0, #0
+    MOV TL0, #0
     MOVX A, @DPTR
     INC A
-    CJNE A, #110, LOOP1
-    SETB P1.0  
+    MOVX @DPTR, A
+    CJNE A, #110, LOOP
+    SETB P1.0
     SJMP $
 END
