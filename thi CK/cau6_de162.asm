@@ -1,0 +1,31 @@
+ORG 0000H
+    LJMP MAIN
+ORG 0003H
+    LJMP EXTI_ISR
+ORG 0030H
+MAIN:
+    MOV IE, #81H
+    CLR F0
+    MOV TMOD, #01H
+    
+LOOP:
+    MOV TH0, #HIGH(-20000)
+    MOV TL0, #LOW(-20000)
+    JNB TF0, $
+    JNB F0, STATE2
+    MOV 30H, #0FH
+    SJMP SKIP
+STATE2: 
+    MOV 30H, #0F0H
+SKIP:
+    CLR F0
+    CLR TR0
+    CLR TF0
+    SJMP LOOP
+
+EXTI_ISR:
+    JNB P3.2, $
+    SETB TR0
+    CPL F0
+    RETI
+END

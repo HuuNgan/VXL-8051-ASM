@@ -1,0 +1,49 @@
+ORG 0000H
+    MOV A, PCON
+    SETB ACC.7
+    MOV PCON, A
+    
+    MOV SCON, #50H
+    MOV TMOD, #20H
+    MOV TH1, #-3
+    SETB TR1
+    
+LOOP:
+    JNB RI, $
+    CLR RI
+    MOV A, SBUF
+    
+    CJNE A, #'A', CHECK1
+    CLR P1.7
+    SJMP LOOP
+CHECK1:
+    CJNE A, #'B', CHECK2
+    SETB P1.7
+    SJMP LOOP
+CHECK2:
+    CJNE A, #'C', CHECK3
+    CLR P1.7
+    CALL DELAY_1s
+    SETB P1.7
+    SJMP LOOP
+CHECK3:
+    CJNE A, #'D', LOOP
+    MOV R7, #3
+LED3X:
+    CLR P1.7
+    CALL DELAY_1s
+    SETB P1.7
+    CALL DELAY_1s
+    DJNZ R7, LED3X
+    SJMP LOOP
+
+;PHAN NAY KHONG CAN VIET VI DE BAO CHO SAN CT DELAY_1s
+DELAY_1s:
+    MOV R6, #8
+DL1:MOV R5, #250
+DL2:MOV R4, #250
+    DJNZ R4, $
+    DJNZ R5, DL2
+    DJNZ R6, DL1
+    RET
+END
