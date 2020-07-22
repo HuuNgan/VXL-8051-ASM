@@ -1,0 +1,31 @@
+ORG 0000H
+    LJMP MAIN
+ORG 0003H
+    LJMP IN_ISR
+ORG 0013H
+    LJMP OUT_ISR
+ORG 0030H
+MAIN:
+    MOV IE, #85H
+LOOP:
+    CALL DISPLAY
+    SJMP LOOP
+
+DISPLAY:
+    MOV A, 40H
+    MOV B, #10
+    DIV AB
+    SWAP A
+    ADD A, B
+    MOV P1, A
+    RET
+
+IN_ISR:
+    JNB P3.2, $
+    INC 40H
+    RETI
+OUT_ISR:
+    JNB P3.3, $
+    DEC 40H
+    RETI
+END

@@ -1,0 +1,42 @@
+ORG 0000H
+    LJMP MAIN
+ORG 0003H
+    LJMP IN_ISR
+ORG 0013H
+    LJMP OUT_ISR
+ORG 0030H
+MAIN:
+    MOV IE, #85H
+    MOV R0, #40H
+    CLR P2.0
+
+LOOP:
+    CALL DISPLAY
+    SJMP LOOP
+
+DISPLAY:
+    MOV A, 40H
+    MOV B, #10
+    DIV AB
+    SWAP A
+    ADD A, B
+    MOV P1, A
+    RET
+
+IN_ISR:
+    JNB P3.2, $
+    INC 40H
+    CJNE @R0, #80, SKIP_CLOSE
+    SETB P2.0
+    RETI
+SKIP_CLOSE:
+    RETI
+OUT_ISR:
+    JNB P3.3, $
+    DEC 40H
+    CJNE @R0, #79, SKIP_OPEN
+    CLR P2.0
+    RETI
+SKIP_OPEN:
+    RETI
+END
